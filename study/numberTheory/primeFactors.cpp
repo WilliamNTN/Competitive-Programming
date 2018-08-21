@@ -19,8 +19,8 @@ void primeFactors(LL x){
 		}
 	}
 
-	if(n > 2)
-		cout<<n<<" ";
+	if(x > 2)
+		cout<<x<<" ";
 
 	cout<<endl;
 }
