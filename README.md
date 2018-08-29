@@ -13,6 +13,10 @@ Hackerhank:
 Ladder 1400/1500+:
 	Solutions to problems from ladders 1400+ and 1500+ at a2oj.com
 
+Pramp:
+	Solutions to problems I got at pramp interviews
+	(https://www.pramp.com)
+	
 Study:
 	Codes for studies of some programming subjects
 
