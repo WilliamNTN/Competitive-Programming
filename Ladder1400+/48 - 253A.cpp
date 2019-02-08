@@ -11,22 +11,25 @@ int main(){
 	cin>>n>>m;
 
 	if(n >= m){
-
-		for(int i = 0; i < m; i++)
+		while(m){
 			cout<<"BG";
-
-		for(int i = 0; i < (n-m); i++)
+			n--;m--;
+		}
+		while(n){
 			cout<<"B";
-		cout<<endl;
+			n--;
+		}
 	}
 	else{
-		for(int i = 0; i < m; i++)
+		while(n){
 			cout<<"GB";
-
-		for(int i = 0; i < (n-m); i++)
+			n--;m--;
+		}
+		while(m){
 			cout<<"G";
-		cout<<endl;
+			m--;
+		}
 	}
-
+	cout<<endl;
 	return 0;
 }

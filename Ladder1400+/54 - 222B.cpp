@@ -1,49 +1,48 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 #define LL long long int
 #define pii pair<int,int>
 #define ff first
 #define ss second
+#define pb push_back
+#define mp make_pair
 
 const int maxN = 1010;
-
-int mat[maxN][maxN];
 int n,m,k;
-map<int,int> cols;
-map<int,int> rows;
+
+int table[maxN][maxN];
+int rows[maxN];
+int cols[maxN];
+
 int main(){
-	cin.tie(0);
-	ios_base::sync_with_stdio(0);
+	
+	scanf("%d%d%d",&n,&m,&k);	
 
-	cin>>n>>m>>k;
-	for(int i = 1; i<=n; i++){
-		for(int j = 1; j<=m; j++){
-			cin>>mat[i][j];
+	for(int i = 0; i < n; i++){
+		for(int j = 0; j < m; j++){
+			scanf("%d",&table[i][j]);
 			cols[j] = j;
-			rows[i] = i;
 		}
+		rows[i] = i;
 	}
-
 	while(k--){
-		char c; int x,y;
-		cin>>c>>x>>y;
-
-		if(c == 'g'){
-
-			cout<<mat[rows[x]][rows[y]]<<endl;
-		}
-		else if(c == 'c'){
-			int aux = cols[x];
-			cols[x] = cols[y];
-			cols[y] = aux;
-		}
-		else if(c == 'r'){
-			int aux = rows[x];
-			rows[x] = rows[y];
-			rows[y] = aux;
+		char c = getchar();
+		int a,b;
+		scanf("%c",&c);
+		scanf("%d%d",&a,&b);
+		a--;b--;
+		if(c == 'c'){ //swap columns
+			cols[a] += cols[b];
+			cols[b] = cols[a] - cols[b];
+			cols[a] -= cols[b];
+		}else if(c == 'r'){ // swap rows
+			rows[a] += rows[b];
+			rows[b] = rows[a] - rows[b];
+			rows[a] -= rows[b];
+		}else{
+			printf("%d\n",table[rows[a]][cols[b]]);
 		}
 	}
-
-
 	return 0;
 }

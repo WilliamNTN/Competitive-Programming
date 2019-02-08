@@ -9,14 +9,22 @@ using namespace std;
 #define mp make_pair
 
 const int maxN = 101234;
-int n,m;
+LL n,m,k;
+LL vals[maxN];
+
+int dp[maxN][2];
 
 
 int main(){
 	cin.tie(0);
 	ios_base::sync_with_stdio(0);
 
-	cin>>n>>m;
-	cout<<n+m-1-min(n,m)<<" "<<min(n,m)<<endl;
+	memset(dp,-1,sizeof(dp));
+	cin>>n>>m>>k;
+	for(int i = 0; i < n; i++){
+		cin>>vals[i];
+	}
+
+	cout<<solve(0,k)<<endl;
 	return 0;
 }
