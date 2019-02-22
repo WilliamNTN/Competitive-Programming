@@ -19,7 +19,6 @@ priority_queue<pair<int,int> > pq;
 void dijkstra(int s){
 	
 	memset(dist,0x3f3f3f3f,sizeof(dist));
-
 	pq.push(make_pair(0,s));
 	dist[s] = 0;
 	while(pq.size()){
