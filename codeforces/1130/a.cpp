@@ -7,27 +7,28 @@ using namespace std;
 #define pb push_back
 #define mp make_pair
 
-const int maxN = 201234;
-LL vals[maxN];
+const int maxN = 110;
+int vals[maxN];
 int n;
 int main(){
 	cin.tie(0);
 	ios_base::sync_with_stdio(0);
 
 	cin>>n;
+	int positive = 0, negative = 0, zero = 0;
 	for(int i = 0; i < n; i++){
 		cin>>vals[i];
-		vals[i] = vals[i]%2;
+		if(vals[i] > 0) positive++;
+		else if(vals[i] < 0) negative++;
+		else zero++;
 	}
-	vector<int> vec;
-	for(int i = 0; i < n; i++){
-		if(vec.size() && vals[i] == vec[vec.size()-1]){
-			vec.pop_back();
-		}
-		else
-			vec.pb(vals[i]);
-	}
-	if(vec.size() <= 1) cout<<"YES"<<endl;
-	else cout<<"NO"<<endl;
+	if(positive >= ceil(n/2.0))
+		cout<<1<<endl;
+	else if(negative >= ceil(n/2.0))
+		cout<<-1<<endl;
+	else
+		cout<<0<<endl;
+
+
 	return 0;
 }
