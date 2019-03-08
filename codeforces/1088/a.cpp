@@ -8,10 +8,15 @@ using namespace std;
 #define mp make_pair
 
 const int maxN = 0;
+int x;
 
 int main(){
 	cin.tie(0);
 	ios_base::sync_with_stdio(0);
-
+	cin>>x;
+	if(x == 1){
+		cout<<-1<<endl; return 0;
+	}
+	cout<<x<<" "<<x<<endl;
 	return 0;
 }
