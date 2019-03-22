@@ -70,7 +70,7 @@ int main(){
 			LL number = bfs(i);
 			//cout<<"TOTAl = "<<number<<endl;
 			LL thisV = powMod(number,k);
-			ans = ans - thisV;
+			ans = (((ans - thisV)%mod)+mod)%mod;
 
 		}
 	}
