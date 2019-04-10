@@ -21,7 +21,7 @@ LL mySecondGCD(LL a, LL b){
 
 	if(a == b) return a;
 
-	while(a != b && a && b){
+	while(a != b){
 		if(a > b)
 			a = a-b;
 		else
