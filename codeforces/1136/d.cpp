@@ -8,36 +8,40 @@ using namespace std;
 #define mp make_pair
 
 const int maxN = 501234;
-int n,m;
-vector<pii> passes;
+int n,m,ans;
+
+vector<int> graph[maxN];
+
 int vals[maxN];
-vector<int> toPass;
+map<int,int> isInP;
 int main(){
 	cin.tie(0);
 	ios_base::sync_with_stdio(0);
 
+
 	cin>>n>>m;
-	for(int i = 0; i < n; i++)
+	for(int i = 0; i < n; i++){
 		cin>>vals[i];
+		vals[i]--;
+	}
 	for(int i = 0; i < m; i++){
 		int u,v;
 		cin>>u>>v;
-		passes.pb(mp(u,v));
+		u--;v--;
+		graph[u].pb(v);
 	}
-	sort(passes.begin(),passes.end());
-	toPass.pb(vals[n-1]);
-	int ans = 0;
-	for(int i = n-2; i>= 0; i--){
-		bool flag = true;
-		for(int j = 0; j < toPass.size(); j++){
-			int id = lower_bound(passes.begin(),passes.end(),mp(vals[i],toPass[j])) - passes.begin();
-			if(passes[id].ff != vals[i] || passes[id].ss != toPass[j])
-				flag = false;
+	ans = 0;
+	isInP[vals[n-1]] = 1;
+	int count = 1;
+	for(int i = n-2; i >= 0; i--){
+		int thisCount = 0;
+		for(int j = 0; j < graph[vals[i]].size(); j++){
+			if(isInP[graph[vals[i]][j]]) thisCount++;
 		}
-		if(flag){
-			ans++;
-		}else{
-			toPass.pb(vals[i]);
+		if(thisCount == count) ans++;
+		else{
+			isInP[vals[i]] = 1;
+			count++;
 		}
 	}
 	cout<<ans<<endl;
